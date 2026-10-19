@@ -12,17 +12,18 @@
 
     <h2>Tecnologias Utilizadas</h2>
     <ul>
-        <li>Lenguaje: HTML5 / Documentacion tecnica</li>
+        <li>Lenguaje: HTML5 / JavaScript / Documentacion tecnica</li>
         <li>Control de versiones: Git y GitHub</li>
         <li>Metodologia: Revision de codigo entre pares (Code Review)</li>
     </ul>
 
     <h2>Metricas de Calidad de Codigo</h2>
     <ul>
-        <li>Total de lineas revisadas (L): 150 lineas</li>
-        <li>Total de defectos encontrados (D): 3 defectos</li>
+        <li>Total de lineas revisadas (L): <span id="numLineas">150</span></li>
+        <li>Total de defectos encontrados (D): <span id="numDefectos">3</span></li>
     </ul>
-    <p>Defectos por cada 100 lineas = (3 / 150) * 100 = 2.0 defectos por cada 100 lineas</p>
+    <p>Resultado del analisis dinamico por JavaScript:</p>
+    <p id="resultadoMetrica"></p>
 
     <h2>Registro de Comentarios de Revision</h2>
     <table border="1">
@@ -55,5 +56,20 @@
             </tr>
         </tbody>
     </table>
+
+    <!-- Script de JavaScript integrado -->
+    <script>
+        function calcularDensidadDefectos(lineas, defectos) {
+            let densidad = (defectos / lineas) * 100;
+            return densidad.toFixed(2);
+        }
+
+        let l = 150;
+        let d = 3;
+        let resultado = calcularDensidadDefectos(l, d);
+
+        document.getElementById("resultadoMetrica").innerHTML = 
+            "La densidad de defectos es de " + resultado + " defectos por cada 100 lineas.";
+    </script>
 </body>
 </html>
